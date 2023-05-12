@@ -24,7 +24,7 @@ print("Today's date:", today)
 # API ptax - puxa os valores BRL-USD para o periodo estipulado e retorna JSON
 initial_date = '05-15-2020'
 final_date = '12-31-2025'
-url = f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='USD'&@dataInicial={initial_date}&@dataFinalCotacao={final_date}&$top=100000000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim"
+url = f"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='USD'&@dataInicial='{initial_date}'&@dataFinalCotacao='{final_date}'&$top=100000000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim"
 ptax = pd.read_json(url)
 ptax['value']
 ptax['value'][4].get('tipoBoletim')
